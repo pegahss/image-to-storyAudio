@@ -11,14 +11,14 @@ from dotenv import find_dotenv, load_dotenv
 # Load environment variables
 load_dotenv(find_dotenv())
 
-HUGGINGFACEHUB_API_TOKEN = os.getenv("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")
+HUGGINGFACEHUB_API_TOKEN = os.getenv("YOUR HUGGINGFACEHUB_API_TOKEN")
 
 # Function for image-to-text
 
 
 def img2text(image_path):
     image_to_text = pipeline(
-        "image-to-text", model="Salesforce/blip-image-captioning-large")
+        "image-to-text", model="nlpconnect/vit-gpt2-image-captioning")
 
     text = image_to_text(image_path)[0]['generated_text']
 
@@ -41,7 +41,7 @@ def generate_story(senario):
     story_llm = LLMChain(llm=OpenAI(
         model_name="gpt-3.5-turbo",
         temperature=1,
-        openai_api_key="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"
+        openai_api_key="YOUR openai_api_key"
     ), prompt=prompt, verbose=True)
 
     story = story_llm.predict(senario=senario)
